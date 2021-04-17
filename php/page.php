@@ -20,8 +20,6 @@
             
             <div class="col-sm-9">
                 <p class="text-secondary"><?php echo $page->content(); ?></p>
-                <?php Theme::plugins('pageEnd'); ?>
-                <br>
                 <?php if (!empty($page->tags(true))): ?>
                 <p class="pt-3">
                     <?php foreach ($page->tags(true) as $tagKey=>$tagName): ?>
@@ -29,6 +27,8 @@
                     <?php endforeach ?>
                 </p>
                 <?php endif; ?>
+                <br>
+                 <?php Theme::plugins('pageEnd'); ?>
             </div>
             
         </div>
