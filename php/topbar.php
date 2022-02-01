@@ -7,13 +7,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <?php foreach ($categories->db as $key=>$fields):
-            if($fields['list']):  ?>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="<?php echo DOMAIN_CATEGORIES.$key; ?>"><?php echo $fields['name']; ?></a>
-            </li>
-            <?php endif;endforeach; ?>
+              <?php foreach ($staticContent as $staticPage): ?>
+                  <li class="nav-item">
+                      <a class="nav-link" href="<?php echo $staticPage->permalink(); ?>"><?php echo $staticPage->title(); ?></a>
+                  </li>
+              <?php endforeach ?>
           </ul>
+          <div class="d-flex">
+              <?php foreach (Theme::socialNetworks() as $key=>$label): ?>
+                  <div class="nav-item">
+                      <a class="nav-link" href="<?php echo $site->{$key}(); ?>" target="_blank">
+                          <i class="fa fa-<?php echo $key ;?>" title="<?php echo $label;?>">&nbsp</i>
+                      </a>
+                  </div>
+              <?php endforeach; ?>
+          </div>
           <?php if (pluginActivated('pluginSearch')): ?>
           <div class="d-flex">
             <input id="search-input" class="form-control me-2 rounded-pill border-0" type="search" placeholder="Search" aria-label="Search">

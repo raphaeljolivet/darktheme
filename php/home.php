@@ -12,12 +12,25 @@
 <?php endif; ?>   
     <!-- content -->
     <div class="container pb-5">
-    <div class="row pb-4">
-      <h2><?php ($WHERE_AM_I=='search'?$language->p('Search'):$language->p('Inspiration for you')) ?></h2>
-    </div>
     <div class="row row-cols-1 row-cols-md-3 g-4">
     <?php if (empty($content)) { $language->p('No pages found'); } ?>
+    <?php $firstNews = true; ?>
+
     <?php foreach ($content as $page): ?>
+
+     <?php if ($firstNews && $page->type() !== "sticky") :?>
+        </div>
+
+        <div class="row">
+            <h1 class="py-5" style="text-align: center">
+                News
+            </h1>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <?php $firstNews=false ?>
+     <?php endif ?>
+
       <div class="col">
         <a class="text-white" href="<?php echo $page->permalink(); ?>">
         <div class="card h-100 bg-dark shadow">
@@ -27,7 +40,7 @@
             <p class="card-text text-secondary"><?php echo (empty($page->description())?$language->p('Complete the description of the article'):$page->description()) ?></p>
           </div>
           <div class="card-footer">
-            <small class="text-secondary"><i class="far fa-folder text-warning"></i>&nbsp; <?php echo $page->category() ?>&nbsp;&nbsp; <i class="far fa-clock text-warning"></i>&nbsp;<?php echo $page->date(); ?></small>
+            &nbsp;&nbsp;<i class="far fa-clock text-warning"></i>&nbsp;<?php echo $page->date(); ?></small>
           </div>
         </div>
         </a>
