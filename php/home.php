@@ -1,6 +1,6 @@
 <?php if ($WHERE_AM_I == 'home'): ?>
     <!-- hero -->
-    <div class="bg-dark text-secondary pb-5 text-center">
+    <div class="bg-dark text-secondary pb-1 text-center">
       <div class="col-sm-12">
         <h1 class="display-5 fw-bold text-white pt-3"><?php echo $site->slogan(); ?></h1>
         <div class="col-lg-6 mx-auto">
@@ -17,6 +17,8 @@
     <?php $firstNews = true; ?>
 
     <?php foreach ($content as $page): ?>
+
+     <?php if ($page->isChild()) continue ?>
 
      <?php if ($firstNews && $page->type() !== "sticky") :?>
         </div>

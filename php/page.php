@@ -3,10 +3,6 @@
     <div class="container pb-5">
 
             <div >
-                <?php if ($page->coverImage()): ?>
-                <img src="<?php echo $page->coverImage(); ?>" class="img-fluid rounded" alt="<?php echo $page->title(); ?>">
-                <small><span class="text-secondary"><?php echo $page->custom('figure'); ?></span></small>
-                <?php endif ?>
                 <h1 class="fw-bold text-white pt-4 pb-5"><?php echo $page->title(); ?></h1>
             </div>
 
